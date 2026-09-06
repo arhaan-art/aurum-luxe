@@ -1,0 +1,53 @@
+# Aurum Luxe — repository-level git configuration.
+# Committed so every clone behaves identically regardless of local settings.
+
+# ── Line endings ──────────────────────────────────────────────────────
+# Normalise to LF in the object database; check out native on Windows.
+* text=auto eol=lf
+
+*.html   text eol=lf
+*.css    text eol=lf
+*.js     text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+*.py     text eol=lf diff=python
+*.sh     text eol=lf
+
+# ── Binary ────────────────────────────────────────────────────────────
+# Never diffed, never line-ending-mangled.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.avif   binary
+*.gif    binary
+*.ico    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.pdf    binary
+*.zip    binary
+
+# ── Diff hunk headers ─────────────────────────────────────────────────
+# Gives `git diff` useful function context in the source files.
+*.js     diff=javascript
+*.css    diff=css
+*.html   diff=html
+
+# ── Export ────────────────────────────────────────────────────────────
+# Excluded from `git archive` tarballs — the storefront ships without
+# its own test and tooling scaffolding.
+.gitattributes  export-ignore
+.gitignore      export-ignore
+tests/          export-ignore
+CLAUDE.md       export-ignore
+
+# ── Merge behaviour ───────────────────────────────────────────────────
+# The catalogue is append-heavy; union keeps both sides of a concurrent
+# product addition rather than raising a conflict on every entry.
+js/products.js  merge=union
+
+# ── Language statistics ───────────────────────────────────────────────
+# Keep GitHub's language bar reflecting the storefront, not the tests.
+tests/*  linguist-vendored
