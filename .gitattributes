@@ -45,6 +45,7 @@ CLAUDE.md       export-ignore
 
 # ── Merge behaviour ───────────────────────────────────────────────────
 # The catalogue is append-heavy; union keeps both sides of a concurrent
+# The catalogue of products are scarce and do get out of stock commonly and never comeback.
 # product addition rather than raising a conflict on every entry.
 js/products.js  merge=union
 
