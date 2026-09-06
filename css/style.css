@@ -291,3 +291,18 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--fg-faint);fon
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+/* Scarcity urgency. Deliberately quiet for a luxury shelf: a warm amber line
+   with a slow pulse, not a red banner. Respects reduced-motion. */
+.hurry{display:flex;align-items:center;gap:8px;margin:2px 0 0;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn)}
+.hurry::before{content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--warn);box-shadow:0 0 0 0 rgba(217,140,95,.55);
+  animation:hurryPulse 2s var(--ease) infinite}
+.hurry-lg{font-size:12px;letter-spacing:.16em;margin:14px 0 0}
+@keyframes hurryPulse{
+  0%{box-shadow:0 0 0 0 rgba(217,140,95,.55)}
+  70%{box-shadow:0 0 0 9px rgba(217,140,95,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,140,95,0)}
+}
+@media (prefers-reduced-motion:reduce){ .hurry::before{animation:none} }

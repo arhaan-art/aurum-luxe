@@ -13,6 +13,17 @@ const esc = s => String(s).replace(/[&<>"']/g, c =>
 
 let filter = 'all';
 
+/* Scarcity copy. One source of truth so the card, the product view and the bag
+   never disagree about how urgent a piece is. Keys off the same stock <= 2
+   threshold the styling uses. */
+const LOW_STOCK = 2;
+const isScarce = p => p.stock <= LOW_STOCK;
+const scarceTag = p => p.stock === 1 ? 'Last piece' : `Only ${p.stock} left`;
+const scarceLine = p => p.stock === 1
+  ? 'Hurry — only 1 left in stock!'
+  : `Hurry — only ${p.stock} left in stock!`;
+
+
 /* ── shells ──────────────────────────────────────────────────────────── */
 const shot = (p, cls = '') => `
   <div class="shot ${cls}" style="background:linear-gradient(150deg,${p.tone[1]},${p.tone[0]})">
@@ -45,11 +56,12 @@ function renderGrid(){
     return `
     <article class="card" data-open="${p.id}" style="animation-delay:${Math.min(i,10)*45}ms">
       ${shot(p)}
-      ${p.stock <= 2 ? `<span class="tag rare">${p.stock === 1 ? 'Last piece' : 'Only 2 left'}</span>` : ''}
+      ${isScarce(p) ? `<span class="tag rare">${scarceTag(p)}</span>` : ''}
       <div class="body">
         <span class="brand">${esc(p.brand)}</span>
         <h3>${esc(p.name)}</h3>
         <p class="blurb">${esc(p.blurb)}</p>
+        ${isScarce(p) ? `<p class="hurry">${scarceLine(p)}</p>` : ''}
         <div class="row">
           <span class="price">${inr(p.price)}</span>
           <button class="add" data-add="${p.id}" ${gone ? 'disabled' : ''}>
@@ -81,6 +93,7 @@ function openProduct(id){
             `<div class="spec"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}
           <div class="spec"><dt>Availability</dt><dd>${p.stock} in stock</dd></div>
         </dl>
+        ${isScarce(p) ? `<p class="hurry hurry-lg">${scarceLine(p)}</p>` : ''}
         <div class="pv-buy">
           <span class="price">${inr(p.price)}</span>
           <button class="btn" style="width:auto;padding:14px 34px;margin:0"
