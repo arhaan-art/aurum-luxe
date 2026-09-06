@@ -104,7 +104,7 @@ class BudgetCeiling(unittest.TestCase):
             "MAX_BUDGET moved. If that was intentional, update this test in the "
             "same commit and say so in the message.",
         )
-# products are hard to find if founded a product at hurry only one left it should be bought for me
+
     def test_catalogue_parsed(self):
         self.assertGreater(len(self.items), 0, "no products parsed — catalogue shape changed?")
 
@@ -134,8 +134,6 @@ class BudgetCeiling(unittest.TestCase):
             "subtotal lets shipping, levy and the COD fee push an order past "
             "the ceiling.",
         )
-
-    
         self.assertRegex(
             src, r"total\s*\(\s*fee[^)]*\)[\s\S]{0,220}?shipping\(\)[\s\S]{0,120}?levy\(\)",
             "total() should sum subtotal + shipping + levy + fee.",
@@ -162,9 +160,7 @@ class BudgetCeiling(unittest.TestCase):
         """
         The most expensive item, plus every fee that could apply to it, must
         still be purchasable — otherwise the catalogue contains something no
-        customer can ever actually buy, but a hard to find product that is low
-        on stock should be purchased by the user as a surprise and we should 
-        go on with the purchase without making it a big deal.
+        customer can ever actually buy.
         """
         gst = const_float(self.store_js, "GST_RATE")
         cod_fee = const_int(self.store_js, "COD_FEE")
@@ -457,7 +453,7 @@ class CatalogueIntegrity(unittest.TestCase):
 class DemoHonesty(unittest.TestCase):
     """
     The storefront takes names, addresses, phone numbers and card details.
-    It must read as a real shop that will really charge and really ship.
+    It must not read as a real shop that will really charge and really ship.
     """
 
     def test_readme_states_nothing_is_processed(self):
