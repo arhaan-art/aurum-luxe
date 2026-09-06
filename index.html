@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurum Luxe — Considered Luxury</title>
+<meta name="description" content="A curated house of high-end technology, horology, tailoring and objets — every piece under ₹10,00,000.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◆</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="rail hdr">
+    <div class="logo">AURUM <span>LUXE</span></div>
+    <nav id="nav"></nav>
+    <button class="cart-btn" id="cartBtn">
+      Cart <span class="pip" id="pip">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="rail hero-in">
+    <p class="eyebrow reveal">Established for the few</p>
+    <h1 class="reveal" style="animation-delay:.1s">Objects worth <em>waiting</em> for.</h1>
+    <p class="reveal" style="animation-delay:.2s">
+      A small house of technology, horology, tailoring and objets — each piece chosen
+      for how it is made, not how loudly it announces itself.
+    </p>
+    <div class="reveal" style="animation-delay:.3s">
+      <span class="cap">Every piece under <b id="capLabel">₹10,00,000</b></span>
+    </div>
+  </div>
+</section>
+
+<div class="rail">
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <div class="rail fgrid">
+    <div class="logo" style="font-size:19px">AURUM <span>LUXE</span></div>
+    <div>Complimentary insured delivery · 14-day returns · Lifetime servicing</div>
+    <div>A demonstration storefront. No live payments are processed.</div>
+  </div>
+</footer>
+
+<!-- overlays -->
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="dh">
+    <h2>Your Bag</h2>
+    <button class="x" id="closeCart" aria-label="Close">&times;</button>
+  </div>
+  <div class="dbody" id="cartBody"></div>
+  <div class="dfoot" id="cartFoot"></div>
+</aside>
+
+<div class="modal" id="pModal" role="dialog" aria-modal="true">
+  <div class="sheet" id="pSheet"></div>
+</div>
+
+<div class="modal" id="coModal" role="dialog" aria-modal="true">
+  <div class="sheet" id="coSheet"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/store.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
