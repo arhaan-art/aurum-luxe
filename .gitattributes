@@ -26,7 +26,6 @@
 *.woff2  binary
 *.ttf    binary
 *.otf    binary
-*.pdf    binary
 *.zip    binary
 
 # ── Diff hunk headers ─────────────────────────────────────────────────
