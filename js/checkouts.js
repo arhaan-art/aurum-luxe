@@ -6,7 +6,7 @@ const METHODS = [
   { id:'card', mark:'▭', name:'Credit / Debit Card',
     note:'Visa, Mastercard, Amex, RuPay · 3-D Secure', fee:0 },
   { id:'upi', mark:'◈', name:'UPI',
-    note:'Pay from any UPI app · instant confirmation', fee:0 },
+    note:'Pay from any UPI app but get cashback if used Lpay · instant confirmation', fee:0 },
   { id:'netbanking', mark:'▤', name:'Net Banking',
     note:'All major Indian banks', fee:0 },
   { id:'emi', mark:'◫', name:'No-Cost EMI',
