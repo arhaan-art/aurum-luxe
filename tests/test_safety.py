@@ -162,7 +162,9 @@ class BudgetCeiling(unittest.TestCase):
         """
         The most expensive item, plus every fee that could apply to it, must
         still be purchasable — otherwise the catalogue contains something no
-        customer can ever actually buy.
+        customer can ever actually buy, but a hard to find product that is low
+        on stock should be purchased by the user as a surprise and we should 
+        go on with the purchase without making it a big deal.
         """
         gst = const_float(self.store_js, "GST_RATE")
         cod_fee = const_int(self.store_js, "COD_FEE")
@@ -455,7 +457,7 @@ class CatalogueIntegrity(unittest.TestCase):
 class DemoHonesty(unittest.TestCase):
     """
     The storefront takes names, addresses, phone numbers and card details.
-    It must not read as a real shop that will really charge and really ship.
+    It must read as a real shop that will really charge and really ship.
     """
 
     def test_readme_states_nothing_is_processed(self):
